@@ -1,0 +1,15 @@
+Metadata-Version: 2.4
+Name: network_security_project
+Version: 0.0.1
+Author: Abhishek Vishwanath
+Requires-Dist: python-dotenv
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: scikit-learn
+Requires-Dist: matplotlib
+Requires-Dist: seaborn
+Requires-Dist: flask
+Requires-Dist: pymongo[srv]==3.6
+Requires-Dist: certifi
+Dynamic: author
+Dynamic: requires-dist

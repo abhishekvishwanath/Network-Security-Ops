@@ -1,0 +1,11 @@
+python-dotenv
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+flask
+pymongo[srv]==3.6
+certifi
+-e .
+
