@@ -1,11 +1,16 @@
 python-dotenv
+ipykernel
 pandas
 numpy
 scikit-learn
 matplotlib
 seaborn
 flask
-pymongo[srv]==3.6
+pymongo[srv]>=4.0
 certifi
+mlflow
+dagshub
+fastapi
+uvicorn
 -e .
 

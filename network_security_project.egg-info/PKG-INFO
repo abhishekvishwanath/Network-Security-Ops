@@ -9,7 +9,11 @@ Requires-Dist: scikit-learn
 Requires-Dist: matplotlib
 Requires-Dist: seaborn
 Requires-Dist: flask
-Requires-Dist: pymongo[srv]==3.6
+Requires-Dist: pymongo[srv]>=4.0
 Requires-Dist: certifi
+Requires-Dist: mlflow
+Requires-Dist: dagshub
+Requires-Dist: fastapi
+Requires-Dist: uvicorn
 Dynamic: author
 Dynamic: requires-dist
