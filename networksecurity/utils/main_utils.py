@@ -36,8 +36,11 @@ def save_numpy_array_data(data:np.ndarray,file_path:str)->None:
 
 def load_numpy_array_data(file_path:str)->np.ndarray:
     try:
+        logging.info(f"Loading numpy array from: {file_path}")
         with open(file_path,'rb') as file:
-            return np.load(file)
+            data = np.load(file)
+        logging.info(f"Numpy array loaded successfully: {file_path}")
+        return data
     except Exception as e:
         raise CustomException(e,sys)
     
@@ -58,15 +61,5 @@ def load_object(file_path:str)->object:
             obj = pickle.load(file)
         logging.info(f"Object loaded successfully: {file_path}")
         return obj
-    except Exception as e:
-        raise CustomException(e,sys)
-
-def load_numpy_array_data(file_path:str)->np.ndarray:
-    try:
-        logging.info(f"Loading numpy array from: {file_path}")
-        with open(file_path,'rb') as file:
-            data = np.load(file)
-        logging.info(f"Numpy array loaded successfully: {file_path}")
-        return data
     except Exception as e:
         raise CustomException(e,sys)

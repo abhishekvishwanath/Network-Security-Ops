@@ -3,6 +3,7 @@ Name: network_security_project
 Version: 0.0.1
 Author: Abhishek Vishwanath
 Requires-Dist: python-dotenv
+Requires-Dist: ipykernel
 Requires-Dist: pandas
 Requires-Dist: numpy
 Requires-Dist: scikit-learn

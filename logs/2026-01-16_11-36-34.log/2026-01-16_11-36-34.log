@@ -1,0 +1,256 @@
+[2026-01-16 11:36:36,066] INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2026-01-16 11:36:36,073] INFO - Accessing as abhishekvishwanath
+[2026-01-16 11:36:37,009] INFO - HTTP Request: GET https://dagshub.com/api/v1/repos/abhishekvishwanath/Network-Security-Ops "HTTP/1.1 200 OK"
+[2026-01-16 11:36:37,831] INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2026-01-16 11:36:37,834] INFO - Initialized MLflow to track repo "abhishekvishwanath/Network-Security-Ops"
+[2026-01-16 11:36:37,835] INFO - Repository abhishekvishwanath/Network-Security-Ops initialized!
+[2026-01-16 11:36:38,920] INFO - Loading object from: final_model/preprocessor.pkl
+[2026-01-16 11:36:38,920] INFO - Object loaded successfully: final_model/preprocessor.pkl
+[2026-01-16 11:36:38,920] INFO - Loading object from: final_model/model.pkl
+[2026-01-16 11:36:38,922] INFO - Object loaded successfully: final_model/model.pkl
+[2026-01-16 11:36:38,922] INFO - Starting prediction process
+[2026-01-16 11:36:38,924] INFO - Data preprocessing completed
+[2026-01-16 11:36:38,924] INFO - Prediction completed for 3 samples
+[2026-01-16 11:37:18,966] INFO - Starting training pipeline...
+[2026-01-16 11:37:18,966] INFO - Starting data ingestion...
+[2026-01-16 11:37:18,966] INFO - Initializing DataIngestionConfig...
+[2026-01-16 11:37:18,966] INFO - DataIngestionConfig initialized: <networksecurity.entity.config_entity.DataIngestionConfig object at 0x127257620>
+[2026-01-16 11:37:18,966] INFO - Initializing DataIngestion...
+[2026-01-16 11:37:18,966] INFO - Starting data ingestion process...
+[2026-01-16 11:37:18,967] INFO - Exporting data from MongoDB to DataFrame
+[2026-01-16 11:37:19,010] ERROR - Error in start_data_ingestion: Error occured in python script name [/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py] line number [67] error message [<module 'sys' (built-in)>]
+Traceback (most recent call last):
+  File "/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py", line 31, in export_collection_as_dataframe
+    mongo_client=pymongo.MongoClient(MONGO_DB_URL)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/mongo_client.py", line 891, in __init__
+    self._get_topology()  # type: ignore[unused-coroutine]
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/mongo_client.py", line 1758, in _get_topology
+    self._resolve_srv()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/mongo_client.py", line 910, in _resolve_srv
+    res = uri_parser._parse_srv(
+        entity,
+    ...<6 lines>...
+        srv_max_hosts=srv_max_hosts,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/uri_parser.py", line 168, in _parse_srv
+    nodes = dns_resolver.get_hosts()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/srv_resolver.py", line 157, in get_hosts
+    _, nodes = self._get_srv_response_and_hosts(True)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/srv_resolver.py", line 131, in _get_srv_response_and_hosts
+    results = self._resolve_uri(encapsulate_errors)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/srv_resolver.py", line 125, in _resolve_uri
+    raise ConfigurationError(str(exc)) from None
+pymongo.errors.ConfigurationError: The DNS query name does not exist: _mongodb._tcp.cluster0.faxl34i.mongodb.net.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py", line 67, in initiate_data_ingestion
+    df=self.export_collection_as_dataframe()
+  File "/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py", line 40, in export_collection_as_dataframe
+    raise CustomException(e,sys)
+networksecurity.exception.exception.CustomException: Error occured in python script name [/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py] line number [31] error message [<module 'sys' (built-in)>]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/pipelines/training_pipeline.py", line 36, in start_data_ingestion
+    data_ingestion_artifact = data_ingestion.initiate_data_ingestion()
+  File "/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py", line 77, in initiate_data_ingestion
+    raise CustomException(e,sys)
+networksecurity.exception.exception.CustomException: Error occured in python script name [/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py] line number [67] error message [<module 'sys' (built-in)>]
+[2026-01-16 11:37:19,011] ERROR - Error in pipeline: Error in start_data_ingestion: Error occured in python script name [/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py] line number [67] error message [<module 'sys' (built-in)>]
+Traceback (most recent call last):
+  File "/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py", line 31, in export_collection_as_dataframe
+    mongo_client=pymongo.MongoClient(MONGO_DB_URL)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/mongo_client.py", line 891, in __init__
+    self._get_topology()  # type: ignore[unused-coroutine]
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/mongo_client.py", line 1758, in _get_topology
+    self._resolve_srv()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/mongo_client.py", line 910, in _resolve_srv
+    res = uri_parser._parse_srv(
+        entity,
+    ...<6 lines>...
+        srv_max_hosts=srv_max_hosts,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/uri_parser.py", line 168, in _parse_srv
+    nodes = dns_resolver.get_hosts()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/srv_resolver.py", line 157, in get_hosts
+    _, nodes = self._get_srv_response_and_hosts(True)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/srv_resolver.py", line 131, in _get_srv_response_and_hosts
+    results = self._resolve_uri(encapsulate_errors)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/srv_resolver.py", line 125, in _resolve_uri
+    raise ConfigurationError(str(exc)) from None
+pymongo.errors.ConfigurationError: The DNS query name does not exist: _mongodb._tcp.cluster0.faxl34i.mongodb.net.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py", line 67, in initiate_data_ingestion
+    df=self.export_collection_as_dataframe()
+  File "/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py", line 40, in export_collection_as_dataframe
+    raise CustomException(e,sys)
+networksecurity.exception.exception.CustomException: Error occured in python script name [/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py] line number [31] error message [<module 'sys' (built-in)>]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/pipelines/training_pipeline.py", line 36, in start_data_ingestion
+    data_ingestion_artifact = data_ingestion.initiate_data_ingestion()
+  File "/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py", line 77, in initiate_data_ingestion
+    raise CustomException(e,sys)
+networksecurity.exception.exception.CustomException: Error occured in python script name [/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py] line number [67] error message [<module 'sys' (built-in)>]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/pipelines/training_pipeline.py", line 87, in run_pipeline
+    data_ingestion_artifact = self.start_data_ingestion()
+  File "/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/pipelines/training_pipeline.py", line 47, in start_data_ingestion
+    raise Exception(error_msg) from e
+Exception: Error in start_data_ingestion: Error occured in python script name [/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py] line number [67] error message [<module 'sys' (built-in)>]
+[2026-01-16 11:37:20,597] INFO - Starting training pipeline...
+[2026-01-16 11:37:20,597] INFO - Starting data ingestion...
+[2026-01-16 11:37:20,597] INFO - Initializing DataIngestionConfig...
+[2026-01-16 11:37:20,597] INFO - DataIngestionConfig initialized: <networksecurity.entity.config_entity.DataIngestionConfig object at 0x12719bd90>
+[2026-01-16 11:37:20,597] INFO - Initializing DataIngestion...
+[2026-01-16 11:37:20,597] INFO - Starting data ingestion process...
+[2026-01-16 11:37:20,598] INFO - Exporting data from MongoDB to DataFrame
+[2026-01-16 11:37:20,643] ERROR - Error in start_data_ingestion: Error occured in python script name [/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py] line number [67] error message [<module 'sys' (built-in)>]
+Traceback (most recent call last):
+  File "/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py", line 31, in export_collection_as_dataframe
+    mongo_client=pymongo.MongoClient(MONGO_DB_URL)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/mongo_client.py", line 891, in __init__
+    self._get_topology()  # type: ignore[unused-coroutine]
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/mongo_client.py", line 1758, in _get_topology
+    self._resolve_srv()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/mongo_client.py", line 910, in _resolve_srv
+    res = uri_parser._parse_srv(
+        entity,
+    ...<6 lines>...
+        srv_max_hosts=srv_max_hosts,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/uri_parser.py", line 168, in _parse_srv
+    nodes = dns_resolver.get_hosts()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/srv_resolver.py", line 157, in get_hosts
+    _, nodes = self._get_srv_response_and_hosts(True)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/srv_resolver.py", line 131, in _get_srv_response_and_hosts
+    results = self._resolve_uri(encapsulate_errors)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/srv_resolver.py", line 125, in _resolve_uri
+    raise ConfigurationError(str(exc)) from None
+pymongo.errors.ConfigurationError: The DNS query name does not exist: _mongodb._tcp.cluster0.faxl34i.mongodb.net.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py", line 67, in initiate_data_ingestion
+    df=self.export_collection_as_dataframe()
+  File "/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py", line 40, in export_collection_as_dataframe
+    raise CustomException(e,sys)
+networksecurity.exception.exception.CustomException: Error occured in python script name [/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py] line number [31] error message [<module 'sys' (built-in)>]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/pipelines/training_pipeline.py", line 36, in start_data_ingestion
+    data_ingestion_artifact = data_ingestion.initiate_data_ingestion()
+  File "/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py", line 77, in initiate_data_ingestion
+    raise CustomException(e,sys)
+networksecurity.exception.exception.CustomException: Error occured in python script name [/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py] line number [67] error message [<module 'sys' (built-in)>]
+[2026-01-16 11:37:20,643] ERROR - Error in pipeline: Error in start_data_ingestion: Error occured in python script name [/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py] line number [67] error message [<module 'sys' (built-in)>]
+Traceback (most recent call last):
+  File "/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py", line 31, in export_collection_as_dataframe
+    mongo_client=pymongo.MongoClient(MONGO_DB_URL)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/mongo_client.py", line 891, in __init__
+    self._get_topology()  # type: ignore[unused-coroutine]
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/mongo_client.py", line 1758, in _get_topology
+    self._resolve_srv()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/mongo_client.py", line 910, in _resolve_srv
+    res = uri_parser._parse_srv(
+        entity,
+    ...<6 lines>...
+        srv_max_hosts=srv_max_hosts,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/uri_parser.py", line 168, in _parse_srv
+    nodes = dns_resolver.get_hosts()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/srv_resolver.py", line 157, in get_hosts
+    _, nodes = self._get_srv_response_and_hosts(True)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/srv_resolver.py", line 131, in _get_srv_response_and_hosts
+    results = self._resolve_uri(encapsulate_errors)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymongo/synchronous/srv_resolver.py", line 125, in _resolve_uri
+    raise ConfigurationError(str(exc)) from None
+pymongo.errors.ConfigurationError: The DNS query name does not exist: _mongodb._tcp.cluster0.faxl34i.mongodb.net.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py", line 67, in initiate_data_ingestion
+    df=self.export_collection_as_dataframe()
+  File "/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py", line 40, in export_collection_as_dataframe
+    raise CustomException(e,sys)
+networksecurity.exception.exception.CustomException: Error occured in python script name [/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py] line number [31] error message [<module 'sys' (built-in)>]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/pipelines/training_pipeline.py", line 36, in start_data_ingestion
+    data_ingestion_artifact = data_ingestion.initiate_data_ingestion()
+  File "/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py", line 77, in initiate_data_ingestion
+    raise CustomException(e,sys)
+networksecurity.exception.exception.CustomException: Error occured in python script name [/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py] line number [67] error message [<module 'sys' (built-in)>]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/pipelines/training_pipeline.py", line 87, in run_pipeline
+    data_ingestion_artifact = self.start_data_ingestion()
+  File "/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/pipelines/training_pipeline.py", line 47, in start_data_ingestion
+    raise Exception(error_msg) from e
+Exception: Error in start_data_ingestion: Error occured in python script name [/Users/abhishek/Documents/My Work/ML Projects/ML ops-Network Security/networksecurity/components/data_ingestion.py] line number [67] error message [<module 'sys' (built-in)>]
+[2026-01-16 11:39:21,342] INFO - Loading object from: final_model/preprocessor.pkl
+[2026-01-16 11:39:21,342] INFO - Object loaded successfully: final_model/preprocessor.pkl
+[2026-01-16 11:39:21,342] INFO - Loading object from: final_model/model.pkl
+[2026-01-16 11:39:21,344] INFO - Object loaded successfully: final_model/model.pkl
+[2026-01-16 11:39:21,344] INFO - Starting prediction process
+[2026-01-16 11:39:21,345] INFO - Data preprocessing completed
+[2026-01-16 11:39:21,345] INFO - Prediction completed for 3 samples
+[2026-01-16 11:39:24,027] INFO - Loading object from: final_model/preprocessor.pkl
+[2026-01-16 11:39:24,027] INFO - Object loaded successfully: final_model/preprocessor.pkl
+[2026-01-16 11:39:24,027] INFO - Loading object from: final_model/model.pkl
+[2026-01-16 11:39:24,028] INFO - Object loaded successfully: final_model/model.pkl
+[2026-01-16 11:39:24,028] INFO - Starting prediction process
+[2026-01-16 11:39:24,029] INFO - Data preprocessing completed
+[2026-01-16 11:39:24,029] INFO - Prediction completed for 3 samples
+[2026-01-16 11:39:27,102] INFO - Loading object from: final_model/preprocessor.pkl
+[2026-01-16 11:39:27,102] INFO - Object loaded successfully: final_model/preprocessor.pkl
+[2026-01-16 11:39:27,102] INFO - Loading object from: final_model/model.pkl
+[2026-01-16 11:39:27,103] INFO - Object loaded successfully: final_model/model.pkl
+[2026-01-16 11:39:27,103] INFO - Starting prediction process
+[2026-01-16 11:39:27,104] INFO - Data preprocessing completed
+[2026-01-16 11:39:27,104] INFO - Prediction completed for 3 samples
+[2026-01-16 11:43:58,753] INFO - Loading object from: final_model/preprocessor.pkl
+[2026-01-16 11:43:58,757] INFO - Object loaded successfully: final_model/preprocessor.pkl
+[2026-01-16 11:43:58,757] INFO - Loading object from: final_model/model.pkl
+[2026-01-16 11:43:58,766] INFO - Object loaded successfully: final_model/model.pkl
+[2026-01-16 11:43:58,767] INFO - Starting prediction process
+[2026-01-16 11:43:58,770] INFO - Data preprocessing completed
+[2026-01-16 11:43:58,771] INFO - Prediction completed for 3 samples
+[2026-01-16 11:44:15,178] INFO - Loading object from: final_model/preprocessor.pkl
+[2026-01-16 11:44:15,181] INFO - Object loaded successfully: final_model/preprocessor.pkl
+[2026-01-16 11:44:15,181] INFO - Loading object from: final_model/model.pkl
+[2026-01-16 11:44:15,185] INFO - Object loaded successfully: final_model/model.pkl
+[2026-01-16 11:44:15,186] INFO - Starting prediction process
+[2026-01-16 11:44:15,188] INFO - Data preprocessing completed
+[2026-01-16 11:44:15,189] INFO - Prediction completed for 3 samples

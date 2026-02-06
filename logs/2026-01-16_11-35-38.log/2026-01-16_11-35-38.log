@@ -1,0 +1,7 @@
+[2026-01-16 11:35:38,954] INFO - Loading object from: final_model/preprocessor.pkl
+[2026-01-16 11:35:39,371] INFO - Object loaded successfully: final_model/preprocessor.pkl
+[2026-01-16 11:35:39,371] INFO - Loading object from: final_model/model.pkl
+[2026-01-16 11:35:39,412] INFO - Object loaded successfully: final_model/model.pkl
+[2026-01-16 11:35:39,418] INFO - Starting prediction process
+[2026-01-16 11:35:39,421] INFO - Data preprocessing completed
+[2026-01-16 11:35:39,421] INFO - Prediction completed for 3 samples

@@ -1,8 +1,11 @@
 import os
 import sys
 import numpy as np
-import mlflow
-import dagshub
+# Type checking: These imports are available at runtime
+# Install packages: pip install mlflow dagshub
+import mlflow  # type: ignore
+from mlflow.models import infer_signature  # type: ignore
+import dagshub  # type: ignore
 dagshub.init(repo_owner='abhishekvishwanath', repo_name='Network-Security-Ops', mlflow=True)
 
 from networksecurity.exception.exception import CustomException
@@ -12,12 +15,16 @@ from networksecurity.entity.artifacts_entity import ModelTrainerArtifact
 from networksecurity.entity.config_entity import ModelTrainerConfig
 from networksecurity.entity.artifacts_entity import DataTransformationArtifact
 
-from networksecurity.utils.main_utils import load_object
-from networksecurity.utils.main_utils import save_object
-from networksecurity.utils.main_utils import save_numpy_array_data
-from networksecurity.utils.main_utils import load_numpy_array_data  
-from networksecurity.utils.ml_utils import get_classification_metrics
-from networksecurity.utils.ml_utils import evaluate_models
+from networksecurity.utils.main_utils import (
+    load_object,
+    save_object,
+    save_numpy_array_data,
+    load_numpy_array_data
+)
+from networksecurity.utils.ml_utils import (
+    get_classification_metrics,
+    evaluate_models
+)
 
 from networksecurity.constants import MODEL_TRAINER_DIR,MODEL_TRAINER_TRAINED_MODEL_NAME
 
@@ -74,7 +81,7 @@ class ModelTrainer:
         except Exception as e:
             logging.warning(f"MLflow tracking failed: {str(e)}")
     
-    def train_model(self, x_train, y_train, x_test, y_test) -> None:
+    def train_model(self, x_train, y_train, x_test, y_test) -> ModelTrainerArtifact:
         try:
             logging.info("Starting model training process")
             

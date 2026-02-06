@@ -1,0 +1,8 @@
+[2026-01-16 11:36:07,976] INFO - Saving object to: final_model/preprocessor.pkl
+[2026-01-16 11:36:07,977] INFO - Object saved successfully: final_model/preprocessor.pkl
+[2026-01-16 11:36:07,977] INFO - Saving numpy array to: artifact/01_16_2026_11_36_07/data_transformation/transformed/train.npy
+[2026-01-16 11:36:07,978] INFO - Numpy array saved successfully: artifact/01_16_2026_11_36_07/data_transformation/transformed/train.npy
+[2026-01-16 11:36:07,979] INFO - Saving numpy array to: artifact/01_16_2026_11_36_07/data_transformation/transformed/test.npy
+[2026-01-16 11:36:07,979] INFO - Numpy array saved successfully: artifact/01_16_2026_11_36_07/data_transformation/transformed/test.npy
+[2026-01-16 11:36:07,979] INFO - Saving object to: artifact/01_16_2026_11_36_07/data_transformation/preprocessor.pkl
+[2026-01-16 11:36:07,980] INFO - Object saved successfully: artifact/01_16_2026_11_36_07/data_transformation/preprocessor.pkl
